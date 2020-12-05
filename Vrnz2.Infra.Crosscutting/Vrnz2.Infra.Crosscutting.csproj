@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageId>Vrnz2.Infra.Crosscutting</PackageId>
+    <Version>1.0.2</Version>
+    <Authors>Vrnz2</Authors>
+    <Company>Vrnz2 Systems</Company>
+    <PackageDescription>Vrnz2 Systems Crosscutting Package</PackageDescription>
+    <RepositoryUrl>https://github.com/Vernizze/Vrnz2.Infra.Crosscutting</RepositoryUrl>
+    <AssemblyVersion>1.0.2.0</AssemblyVersion>
+    <FileVersion>1.0.2.0</FileVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+
+</Project>
