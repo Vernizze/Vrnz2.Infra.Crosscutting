@@ -16,22 +16,25 @@ namespace Vrnz2.Infra.Crosscutting.Types
 
         public readonly string FormatedValue { get; }
         public readonly string OriginalValue { get; }
+        public readonly long NumericValue { get; }
         public readonly string Value { get; }
 
         #endregion
 
         #region Constructors
 
-        public Cpf(int value)
+        public Cpf(long value)
             : this()
         {
             this.OriginalValue = value.ToString();
 
             if (this.IsValid())
             {
-                this.FormatedValue = string.Format("{0##.###.###-##}", this.OriginalValue);
+                this.Value = this.OriginalValue;
 
-                this.Value = this.OriginalValue.OnlyNumeric();
+                this.FormatedValue = long.Parse(this.Value).ToString(@"000\.000\.000\-00");
+
+                this.NumericValue = value;
             }
         }
 
@@ -42,9 +45,11 @@ namespace Vrnz2.Infra.Crosscutting.Types
 
             if (this.IsValid())
             {
-                this.FormatedValue = string.Format("{0##.###.###-##}", this.OriginalValue);
-
                 this.Value = this.OriginalValue.OnlyNumeric();
+
+                this.FormatedValue = long.Parse(this.Value).ToString(@"000\.000\.000\-00");
+
+                this.NumericValue = long.Parse(this.Value);
             }
         }
 
@@ -55,7 +60,7 @@ namespace Vrnz2.Infra.Crosscutting.Types
         public static implicit operator Cpf(string value)
             => new Cpf(value);
 
-        public static implicit operator Cpf(int value)
+        public static implicit operator Cpf(long value)
             => new Cpf(value);
 
         #endregion
