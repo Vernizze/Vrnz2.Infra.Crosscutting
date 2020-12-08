@@ -159,8 +159,8 @@ namespace Vrnz2.Infra.CrossCutting.Types
         {
             var cultureInfo = new CultureInfo(localeName);
 
-            DecimalSeparator = cultureInfo.NumberFormat.NumberDecimalSeparator;
-            ThousandSeparator = cultureInfo.NumberFormat.NumberGroupSeparator;
+            DecimalSeparator = ".";
+            ThousandSeparator = ",";
             CurrencySymbol = cultureInfo.NumberFormat.CurrencySymbol;
 
             return cultureInfo;
