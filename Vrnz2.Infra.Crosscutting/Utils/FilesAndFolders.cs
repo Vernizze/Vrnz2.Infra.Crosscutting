@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Text;
 
-namespace Vrnz2.Infra.Crosscutting.Utils
+namespace Vrnz2.Infra.CrossCutting.Utils
 {
     public static class FilesAndFolders
     {

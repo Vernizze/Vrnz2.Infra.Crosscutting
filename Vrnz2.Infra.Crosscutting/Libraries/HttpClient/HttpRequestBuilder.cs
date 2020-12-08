@@ -5,7 +5,7 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
-using Vrnz2.Infra.Crosscutting.Extensions;
+using Vrnz2.Infra.CrossCutting.Extensions;
 
 namespace Vrnz2.Infra.CrossCutting.Libraries.HttpClient
 {

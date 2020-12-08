@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace Vrnz2.Infra.Crosscutting.Extensions
+namespace Vrnz2.Infra.CrossCutting.Extensions
 {
     public static class EnumerableExtensions
     {

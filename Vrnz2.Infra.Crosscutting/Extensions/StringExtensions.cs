@@ -4,7 +4,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace Vrnz2.Infra.Crosscutting.Extensions
+namespace Vrnz2.Infra.CrossCutting.Extensions
 {
     public static class StringExtensions
     {

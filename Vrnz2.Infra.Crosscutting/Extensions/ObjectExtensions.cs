@@ -3,7 +3,7 @@ using System;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
-namespace Vrnz2.Infra.Crosscutting.Extensions
+namespace Vrnz2.Infra.CrossCutting.Extensions
 {
     public static class ObjectExtensions
     {

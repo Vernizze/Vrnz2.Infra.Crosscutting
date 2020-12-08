@@ -1,8 +1,8 @@
 ﻿using System.Globalization;
 using System.Threading;
-using Vrnz2.Infra.Crosscutting.Extensions;
+using Vrnz2.Infra.CrossCutting.Extensions;
 
-namespace Vrnz2.Infra.Crosscutting.Types
+namespace Vrnz2.Infra.CrossCutting.Types
 {
     public struct Money
     {

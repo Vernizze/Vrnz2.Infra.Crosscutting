@@ -1,8 +1,8 @@
 ﻿using System;
-using Vrnz2.Infra.Crosscutting.Types;
+using Vrnz2.Infra.CrossCutting.Types;
 using Xunit;
 
-namespace Vrnz2.Infra.Crosscutting.Test.Types
+namespace Vrnz2.Infra.CrossCutting.Test.Types
 {
     public class CpfTest
     {
