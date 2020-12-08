@@ -6,73 +6,54 @@ namespace Vrnz2.Infra.CrossCutting.Types
 {
     public struct Money
     {
-        #region Constants
-
-        private const string PT_BR = "pt-BR";
-
-        #endregion
+        private static CultureInfo _oldCulture;
 
         #region Atributes
 
         public readonly string IniValue { get; }
         public readonly decimal? Value { get; }
         public string StringValue { get; private set; }
-        public string CurrencyStringValue { get { return $"{CurrencySymbol} {StringValue}"; } }
 
-        public string CurrentLocaleName { get; private set; }
         public static string DecimalSeparator { get; private set; }
         public static string ThousandSeparator { get; private set; }
-        public static string CurrencySymbol { get; private set; }
 
         #endregion
 
         #region Constructors
 
-        public Money(decimal value) 
-            : this(value, PT_BR) { }
-
-        public Money(string value) 
-            : this(value, PT_BR) { }
-
-        public Money(decimal value, string localeName)
+        public Money(decimal value)
         : this()
         {
-            var cultureInfo = SetupCultureInfo(localeName);
+            var cultureInfo = SetupCultureInfo();
+            var oldCultureName = _oldCulture.Name;
 
-            this.CurrentLocaleName = localeName;
             this.Value = value;
 
             this.StringValue = string.Format(cultureInfo, "{0:#,0.00}", this.Value);
+
+            Thread.CurrentThread.CurrentCulture = new CultureInfo(oldCultureName);
         }
 
-        public Money(string value, string localeName)
+        public Money(string value)
             : this()
         {
-            var old_culture = Thread.CurrentThread.CurrentCulture;
+            Thread.CurrentThread.CurrentCulture = SetupCultureInfo();
+            var oldCultureName = _oldCulture.Name;
 
-            var cultureInfo = SetupCultureInfo(localeName);
-
-            Thread.CurrentThread.CurrentCulture = cultureInfo;
-            Thread.CurrentThread.CurrentUICulture = cultureInfo;
-
-            this.CurrentLocaleName = localeName;
             this.IniValue = value;
 
             if (this.IsValid())
             {
-                this.StringValue = ConvertAndFormat(this.IniValue, localeName);
+                this.StringValue = ConvertAndFormat(this.IniValue);
 
                 if (decimal.TryParse(value, out decimal valor))
                     this.Value = valor;
             }
 
-            Thread.CurrentThread.CurrentCulture = old_culture;
-            Thread.CurrentThread.CurrentUICulture = old_culture;
+            Thread.CurrentThread.CurrentCulture = new CultureInfo(oldCultureName);
         }
 
         #endregion
-
-        #region Methods
 
         #region Operator
 
@@ -83,6 +64,8 @@ namespace Vrnz2.Infra.CrossCutting.Types
             => new Money(value);
 
         #endregion
+
+        #region Methods
 
         public bool IsEmpty()
             => 0.Equals(this.Value);
@@ -102,9 +85,14 @@ namespace Vrnz2.Infra.CrossCutting.Types
 
             if (!string.IsNullOrEmpty(value))
             {
+                Thread.CurrentThread.CurrentCulture = SetupCultureInfo();
+                var oldCultureName = _oldCulture.Name;
+
                 result = ValidateLenght(value);
                 result = result && ValidateSeparator(value);
-            }
+
+                Thread.CurrentThread.CurrentCulture = new CultureInfo(oldCultureName);
+            }            
 
             return result;
         }
@@ -147,21 +135,22 @@ namespace Vrnz2.Infra.CrossCutting.Types
             return result;
         }
 
-        private static string ConvertAndFormat(string value, string localeName = PT_BR)
+        private static string ConvertAndFormat(string value)
         {
             var decValue = Convert(value);
-            var cultureInfo = SetupCultureInfo(localeName);
+            var cultureInfo = SetupCultureInfo();
 
             return string.Format(cultureInfo, "{0:#,0.00}", decValue);
         }
 
-        private static CultureInfo SetupCultureInfo(string localeName = PT_BR)
+        private static CultureInfo SetupCultureInfo()
         {
-            var cultureInfo = new CultureInfo(localeName);
+            _oldCulture = Thread.CurrentThread.CurrentCulture;
+
+            var cultureInfo = new CultureInfo("en-US");
 
             DecimalSeparator = ".";
             ThousandSeparator = ",";
-            CurrencySymbol = cultureInfo.NumberFormat.CurrencySymbol;
 
             return cultureInfo;
         }
