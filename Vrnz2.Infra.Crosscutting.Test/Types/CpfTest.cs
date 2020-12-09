@@ -20,7 +20,7 @@ namespace Vrnz2.Infra.CrossCutting.Test.Types
         [InlineData("257.371.680-50")]
         [InlineData("25737168050")]
         [InlineData("975.956.030-56")]
-        [InlineData("97595603056")]
+        [InlineData("97595603056")]        
         public void ValidCpf_StringValue(string value)
         {
             Cpf cpf = value;
@@ -58,6 +58,8 @@ namespace Vrnz2.Infra.CrossCutting.Test.Types
         [InlineData("25737168150")]
         [InlineData("975.956.031-56")]
         [InlineData("97595603156")]
+        [InlineData(null)]
+        [InlineData("")]
         public void InvalidCpf_StringValue(string value)
         {
             Cpf cpf = value;
@@ -73,6 +75,8 @@ namespace Vrnz2.Infra.CrossCutting.Test.Types
         [InlineData(20918081150)]
         [InlineData(25737168150)]
         [InlineData(97595603156)]
+        [InlineData(0)]
+        [InlineData(-1)]
         public void InvalidCpf_LongValue(long value)
         {
             Cpf cpf = value;

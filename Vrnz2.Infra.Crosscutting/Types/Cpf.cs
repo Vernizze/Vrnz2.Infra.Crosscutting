@@ -83,20 +83,23 @@ namespace Vrnz2.Infra.CrossCutting.Types
         {
             var result = false;
 
-            var valueString = Regex.Replace(value, "[^0-9]+", "");
-
-            if (!Regex.IsMatch(valueString, "(^0+$|^1+$|^2+$|^3+$|^4+$|^5+$|^6+$|^7+$|^8+$|^9+$)", RegexOptions.Multiline))
+            if (!string.IsNullOrEmpty(value)) 
             {
-                if (valueString.Length == 11)
+                var valueString = Regex.Replace(value, "[^0-9]+", "");
+
+                if (!Regex.IsMatch(valueString, "(^0+$|^1+$|^2+$|^3+$|^4+$|^5+$|^6+$|^7+$|^8+$|^9+$)", RegexOptions.Multiline))
                 {
-                    var cpf_array = new int[11];
-
-                    for (int i = 0; i < 11; i++)
+                    if (valueString.Length == 11)
                     {
-                        cpf_array[i] = int.Parse(valueString[i].ToString());
-                    }
+                        var cpf_array = new int[11];
 
-                    result = Validation(cpf_array);
+                        for (int i = 0; i < 11; i++)
+                        {
+                            cpf_array[i] = int.Parse(valueString[i].ToString());
+                        }
+
+                        result = Validation(cpf_array);
+                    }
                 }
             }
 
