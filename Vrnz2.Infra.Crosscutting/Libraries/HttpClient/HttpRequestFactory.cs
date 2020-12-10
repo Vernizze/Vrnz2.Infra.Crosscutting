@@ -111,11 +111,15 @@ namespace Vrnz2.Infra.CrossCutting.Libraries.HttpClient
         public static async Task<HttpResponseMessage> PostFile(string requestUri, string filePath, string apiParamName, List<CustomHttpHeader> custom_headers, TimeSpan? timeout = null)
             => await PostFile(requestUri, filePath, apiParamName, string.Empty, custom_headers, timeout);
 
-        public static async Task<HttpResponseMessage> PostFile(string requestUri, string filePath, string apiParamName, string bearerToken, List<CustomHttpHeader> custom_headers, TimeSpan? timeout = null)
+        public static async Task<HttpResponseMessage> PostFile(string requestUri, string filePath, string apiParamName, string acceptHeader, List<CustomHttpHeader> custom_headers, TimeSpan? timeout = null)
+            => await PostFile(requestUri, filePath, apiParamName, acceptHeader, string.Empty, custom_headers, timeout);
+
+        public static async Task<HttpResponseMessage> PostFile(string requestUri, string filePath, string apiParamName, string acceptHeader, string bearerToken, List<CustomHttpHeader> custom_headers, TimeSpan? timeout = null)
             => await new HttpRequestBuilder()
-                        .AddMethod(HttpMethod.Post)
+                        .AddMethod(HttpMethod.Post)            
                         .AddRequestUri(requestUri)
                         .AddContent(new FileContent(filePath, apiParamName))
+                        .AddAcceptHeader(acceptHeader)
                         .AddCustomHeaders(custom_headers)
                         .AddBearerToken(bearerToken)
                         .AddTimeout(timeout)
