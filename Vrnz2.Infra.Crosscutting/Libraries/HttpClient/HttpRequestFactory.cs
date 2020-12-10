@@ -108,6 +108,9 @@ namespace Vrnz2.Infra.CrossCutting.Libraries.HttpClient
         public static async Task<HttpResponseMessage> PostFile(string requestUri, string filePath, string apiParamName, TimeSpan? timeout = null)
             => await PostFile(requestUri, filePath, apiParamName, string.Empty, new List<CustomHttpHeader>(), timeout);
 
+        public static async Task<HttpResponseMessage> PostFile(string requestUri, string filePath, string apiParamName, List<CustomHttpHeader> custom_headers, TimeSpan? timeout = null)
+            => await PostFile(requestUri, filePath, apiParamName, string.Empty, custom_headers, timeout);
+
         public static async Task<HttpResponseMessage> PostFile(string requestUri, string filePath, string apiParamName, string bearerToken, List<CustomHttpHeader> custom_headers, TimeSpan? timeout = null)
             => await new HttpRequestBuilder()
                         .AddMethod(HttpMethod.Post)
