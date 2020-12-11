@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -24,6 +25,7 @@ namespace Vrnz2.Infra.CrossCutting.Libraries.HttpClient
         private TimeSpan timeout = new TimeSpan(0, 0, 15);
         private bool allowAutoRedirect;
         private List<(string, string)> _queryList = new List<(string, string)>();
+        private ByteArrayContent _fileContent = null;
 
         #endregion Variables
 
@@ -53,6 +55,29 @@ namespace Vrnz2.Infra.CrossCutting.Libraries.HttpClient
         {
             this.content = content;
             return this;
+        }
+
+        public HttpRequestBuilder AddPostFileContent(string filePath, string acceptHeader)
+        {
+            byte[] byteDataArray = PathImageAsByteArray(filePath);
+
+            _fileContent = new ByteArrayContent(byteDataArray);
+
+            _fileContent.Headers.ContentType = new MediaTypeHeaderValue(acceptHeader);
+
+            this.content = _fileContent;
+
+            return this;
+        }
+
+        private byte[] PathImageAsByteArray(string path)
+        {
+            using (FileStream fileStream = new FileStream(path, FileMode.Open, FileAccess.Read))
+            {
+                BinaryReader binaryReader = new BinaryReader(fileStream);
+
+                return binaryReader.ReadBytes((int)fileStream.Length);
+            }
         }
 
         public HttpRequestBuilder AddBearerToken(string bearerToken)
@@ -160,7 +185,12 @@ namespace Vrnz2.Infra.CrossCutting.Libraries.HttpClient
                 Timeout = timeout
             };
 
-            return await client.SendAsync(request).ConfigureAwait(false);
+            var result = await client.SendAsync(request).ConfigureAwait(false);
+
+            if (_fileContent.IsNotNull())
+                _fileContent.Dispose();
+
+            return result;
         }
 
         //Private
