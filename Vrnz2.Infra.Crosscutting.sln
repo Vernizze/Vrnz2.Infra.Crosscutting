@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vrnz2.Infra.Crosscutting", "Vrnz2.Infra.Crosscutting\Vrnz2.Infra.Crosscutting.csproj", "{CFBC4AFE-599B-4600-AE0E-7B7D3B030E1E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vrnz2.Infra.CrossCutting", "Vrnz2.Infra.Crosscutting\Vrnz2.Infra.CrossCutting.csproj", "{CFBC4AFE-599B-4600-AE0E-7B7D3B030E1E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vrnz2.Infra.Crosscutting.Test", "Vrnz2.Infra.Crosscutting.Test\Vrnz2.Infra.Crosscutting.Test.csproj", "{E067579C-10BB-4E30-B629-58633982D8B2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vrnz2.Infra.Crosscutting.Test", "Vrnz2.Infra.Crosscutting.Test\Vrnz2.Infra.Crosscutting.Test.csproj", "{E067579C-10BB-4E30-B629-58633982D8B2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

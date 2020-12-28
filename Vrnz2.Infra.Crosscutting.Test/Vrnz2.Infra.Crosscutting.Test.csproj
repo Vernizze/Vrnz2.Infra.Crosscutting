@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Vrnz2.Infra.Crosscutting\Vrnz2.Infra.Crosscutting.csproj" />
+    <ProjectReference Include="..\Vrnz2.Infra.Crosscutting\Vrnz2.Infra.CrossCutting.csproj" />
   </ItemGroup>
 
 </Project>

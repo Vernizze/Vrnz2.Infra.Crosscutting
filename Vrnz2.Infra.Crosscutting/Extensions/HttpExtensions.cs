@@ -1,7 +1,6 @@
 ﻿using System.Net;
-using Vrnz2.Infra.CrossCutting.Extensions;
 
-namespace Vrnz2.Infra.Crosscutting.Extensions
+namespace Vrnz2.Infra.CrossCutting.Extensions
 {
     public static class HttpExtensions
     {
