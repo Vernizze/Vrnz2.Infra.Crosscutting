@@ -29,5 +29,8 @@ namespace Vrnz2.Infra.CrossCutting.Extensions
 
             return result;
         }
+
+        public static int DiffInYears(this DateTime baseDate, DateTime compareDate)
+            => new DateTime(Math.Abs(compareDate.Date.Subtract(baseDate.Date).Ticks)).Year - 1;
     }
 }
