@@ -4,7 +4,7 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageId>Vrnz2.Infra.Crosscutting</PackageId>
-    <Version>1.0.15</Version>
+    <Version>1.0.16</Version>
     <Authors>Vrnz2</Authors>
     <Company>Vrnz2 Systems</Company>
     <PackageDescription>Vrnz2 Systems Crosscutting Package</PackageDescription>
