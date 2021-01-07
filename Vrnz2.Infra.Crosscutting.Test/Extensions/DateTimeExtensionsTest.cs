@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using Vrnz2.Infra.CrossCutting.Extensions;
 using Xunit;
 
@@ -12,9 +10,9 @@ namespace Vrnz2.Infra.Crosscutting.Test.Extensions
         [InlineData("2020-12-18 00:00:00")]
         public void FirstDayOfMonth_StringValue(string value)
         {
-            var bla = value.FirstDayOfMonth();
+            var date = value.FirstDayOfMonth();
 
-            //Assert.True(cpf.IsValid());
+            Assert.Equal(new DateTime(2020, 12, 01).Date, date.Value.Date);
         }
     }
 }
