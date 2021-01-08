@@ -15,11 +15,10 @@ namespace Vrnz2.Infra.Crosscutting.Test.Libraries.Email
 
             var provider = services.BuildServiceProvider();
 
-            var sendEmail = provider.GetService<ISendEMail>();            
+            var sendEmail = provider.GetService<ISendEMail>();
 
             Assert.NotNull(sendEmail);
             Assert.NotNull(sendEmail.EMailSettings);
-            Assert.Equal("from@internet.com", sendEmail.EMailSettings.mail_from);
         }
     }
 }

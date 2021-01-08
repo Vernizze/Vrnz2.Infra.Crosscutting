@@ -28,7 +28,7 @@ namespace Vrnz2.Infra.CrossCutting.Libraries.Email
 
             _mail = new MailMessage 
             {
-                From = new MailAddress(EMailSettings.mail_from),
+                From = new MailAddress(EMailSettings.mail_from, EMailSettings.email_alias),
                 IsBodyHtml = true
             };
         }
@@ -47,7 +47,6 @@ namespace Vrnz2.Infra.CrossCutting.Libraries.Email
         {
             using (var smtp = new SmtpClient(EMailSettings.smtp_address))
             {
-                _mail.From = new MailAddress(EMailSettings.smtp_credencials_mail, EMailSettings.email_alias);                   // De (Endereço de Email + Alias de Apresentação)
                 _mail.To.Add(Encoding.UTF8.GetString(Encoding.Default.GetBytes(to)));                                           // Para
                 _mail.Subject = Encoding.UTF8.GetString(Encoding.Default.GetBytes(subject));                                    // Assunto
                 _mail.Body = message;                                                                                           // Mensagem

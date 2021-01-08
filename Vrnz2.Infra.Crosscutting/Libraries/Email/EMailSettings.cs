@@ -14,7 +14,5 @@
         public int smtp_port { get; set; }
         public string mail_from { get; set; }
         public string email_alias { get; set; }
-        public string mail_to { get; set; }
-        public string mail_subject { get; set; }
     }
 }
