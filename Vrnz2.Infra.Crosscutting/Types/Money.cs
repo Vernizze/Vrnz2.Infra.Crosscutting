@@ -6,12 +6,16 @@ namespace Vrnz2.Infra.CrossCutting.Types
 {
     public struct Money
     {
+        #region Variables
+
         private static CultureInfo _oldCulture;
+
+        #endregion
 
         #region Atributes
 
-        public readonly string IniValue { get; }
-        public readonly decimal? Value { get; }
+        public string IniValue { get; }
+        public decimal? Value { get; }
         public string StringValue { get; private set; }
 
         public static string DecimalSeparator { get; private set; }
@@ -22,7 +26,7 @@ namespace Vrnz2.Infra.CrossCutting.Types
         #region Constructors
 
         public Money(decimal value)
-        : this()
+            : this()
         {
             var cultureInfo = SetupCultureInfo();
             var oldCultureName = _oldCulture.Name;
@@ -72,6 +76,7 @@ namespace Vrnz2.Infra.CrossCutting.Types
 
         public bool IsNull()
             => this.Value.IsNull();
+
         public bool IsValid()
             => IsValid(this.IniValue);
 

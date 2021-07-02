@@ -6,18 +6,12 @@ namespace Vrnz2.Infra.CrossCutting.Types
 {
     public struct Cpf
     {
-        #region Constants
-
-        private const string PT_BR = "pt-BR";
-
-        #endregion
-
         #region Atributes
 
-        public readonly string FormatedValue { get; }
-        public readonly string OriginalValue { get; }
-        public readonly long NumericValue { get; }
-        public readonly string Value { get; }
+        public string FormatedValue { get; }
+        public string OriginalValue { get; }
+        public long NumericValue { get; }
+        public string Value { get; }
 
         #endregion
 

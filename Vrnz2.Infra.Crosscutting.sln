@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vrnz2.Infra.CrossCutting", "Vrnz2.Infra.Crosscutting\Vrnz2.Infra.CrossCutting.csproj", "{CFBC4AFE-599B-4600-AE0E-7B7D3B030E1E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vrnz2.Infra.Crosscutting.Test", "Vrnz2.Infra.Crosscutting.Test\Vrnz2.Infra.Crosscutting.Test.csproj", "{E067579C-10BB-4E30-B629-58633982D8B2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vrnz2.Infra.Crosscutting.Test", "Vrnz2.Infra.Crosscutting.Test\Vrnz2.Infra.Crosscutting.Test.csproj", "{40EED280-B969-4901-B8E2-6871CA5CF2D8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{CFBC4AFE-599B-4600-AE0E-7B7D3B030E1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CFBC4AFE-599B-4600-AE0E-7B7D3B030E1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CFBC4AFE-599B-4600-AE0E-7B7D3B030E1E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E067579C-10BB-4E30-B629-58633982D8B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E067579C-10BB-4E30-B629-58633982D8B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E067579C-10BB-4E30-B629-58633982D8B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E067579C-10BB-4E30-B629-58633982D8B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40EED280-B969-4901-B8E2-6871CA5CF2D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40EED280-B969-4901-B8E2-6871CA5CF2D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40EED280-B969-4901-B8E2-6871CA5CF2D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40EED280-B969-4901-B8E2-6871CA5CF2D8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
