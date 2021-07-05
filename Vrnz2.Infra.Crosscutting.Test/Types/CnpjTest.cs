@@ -18,7 +18,7 @@ namespace Vrnz2.Infra.Crosscutting.Test.Types
         [InlineData("45135978000107")]
         [InlineData("89.385.770/0001-03")]
         [InlineData("89385770000103")]
-        public void ValidCpf_StringValue(string value)
+        public void ValidCnpj_StringValue(string value)
         {
             Cnpj cnpj = value;
 
@@ -32,7 +32,7 @@ namespace Vrnz2.Infra.Crosscutting.Test.Types
         [InlineData(74654751000168)]
         [InlineData(45135978000107)]
         [InlineData(89385770000103)]
-        public void ValidCpf_LongValue(long value)
+        public void ValidCnpj_LongValue(long value)
         {
             Cnpj cnpj = value;
 
@@ -56,7 +56,7 @@ namespace Vrnz2.Infra.Crosscutting.Test.Types
         [InlineData("97595603158")]
         [InlineData(null)]
         [InlineData("")]
-        public void InvalidCpf_StringValue(string value)
+        public void InvalidCnpj_StringValue(string value)
         {
             Cnpj cnpj = value;
 
@@ -73,7 +73,7 @@ namespace Vrnz2.Infra.Crosscutting.Test.Types
         [InlineData(97595603158)]
         [InlineData(0)]
         [InlineData(-1)]
-        public void InvalidCpf_LongValue(long value)
+        public void InvalidCnpj_LongValue(long value)
         {
             Cnpj cnpj = value;
 
