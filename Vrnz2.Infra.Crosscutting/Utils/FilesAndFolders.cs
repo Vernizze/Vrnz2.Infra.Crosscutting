@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using Vrnz2.Infra.CrossCutting.Extensions;
@@ -56,5 +57,8 @@ namespace Vrnz2.Infra.CrossCutting.Utils
 
             return File.Exists($@"{file_path}\{file_name}");
         }
+
+        public static TAppSettings GetAppSettingsContent<TAppSettings>()
+            => JsonConvert.DeserializeObject<TAppSettings>(GetFileContent($"appsettings.json"));
     }
 }

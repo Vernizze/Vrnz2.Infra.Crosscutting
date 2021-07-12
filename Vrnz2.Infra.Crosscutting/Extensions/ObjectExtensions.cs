@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Vrnz2.Infra.CrossCutting.Extensions
 {
@@ -22,7 +25,35 @@ namespace Vrnz2.Infra.CrossCutting.Extensions
         public static bool IsNotNumeric(this object value)
             => !IsNumeric(value);
 
+        public static byte[] ToByteArray(this object obj)
+        {
+            if (obj == null)
+                return null;
+
+            BinaryFormatter bf = new BinaryFormatter();
+
+            using (MemoryStream ms = new MemoryStream())
+            {
+                bf.Serialize(ms, obj);
+                return ms.ToArray();
+            }
+        }
+
         public static string HashCode(this object obj)
-            => Convert.ToBase64String(Guid.NewGuid().ToByteArray());
+            => Convert.ToBase64String(obj.ToByteArray());
+
+        public static string ToJson<T>(this T obj)
+        {
+            try
+            {
+                return JsonConvert.SerializeObject(obj, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore });
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"{ex.Message}-{ex.StackTrace}");
+
+                return null;
+            }
+        }
     }
 }
