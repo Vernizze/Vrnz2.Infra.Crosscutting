@@ -59,6 +59,6 @@ namespace Vrnz2.Infra.CrossCutting.Utils
         }
 
         public static TAppSettings GetAppSettingsContent<TAppSettings>()
-            => JsonConvert.DeserializeObject<TAppSettings>(GetFileContent($"appsettings.json"));
+            => JsonConvert.DeserializeObject<TAppSettings>(GetFileContent("appsettings.json"));
     }
 }
