@@ -1,4 +1,5 @@
-﻿using Vrnz2.Infra.CrossCutting.Types;
+﻿using FluentAssertions;
+using Vrnz2.Infra.CrossCutting.Types;
 using Xunit;
 
 namespace Vrnz2.Infra.Crosscutting.Test.Types
@@ -20,9 +21,13 @@ namespace Vrnz2.Infra.Crosscutting.Test.Types
         [InlineData("89385770000103")]
         public void ValidCnpj_StringValue(string value)
         {
+            //Arrange
             Cnpj cnpj = value;
 
-            Assert.True(cnpj.IsValid());
+            // Act
+
+            // Assert
+            cnpj.IsValid().Should().BeTrue();
         }
 
         [Theory]
@@ -34,9 +39,13 @@ namespace Vrnz2.Infra.Crosscutting.Test.Types
         [InlineData(89385770000103)]
         public void ValidCnpj_LongValue(long value)
         {
+            //Arrange
             Cnpj cnpj = value;
 
-            Assert.True(cnpj.IsValid());
+            // Act
+
+            // Assert
+            cnpj.IsValid().Should().BeTrue();
         }
 
         [Theory]
@@ -58,9 +67,13 @@ namespace Vrnz2.Infra.Crosscutting.Test.Types
         [InlineData("")]
         public void InvalidCnpj_StringValue(string value)
         {
+            //Arrange
             Cnpj cnpj = value;
 
-            Assert.False(cnpj.IsValid());
+            // Act
+
+            // Assert
+            cnpj.IsValid().Should().BeFalse();
         }
 
         [Theory]
@@ -75,9 +88,13 @@ namespace Vrnz2.Infra.Crosscutting.Test.Types
         [InlineData(-1)]
         public void InvalidCnpj_LongValue(long value)
         {
+            //Arrange
             Cnpj cnpj = value;
 
-            Assert.False(cnpj.IsValid());
+            // Act
+
+            // Assert
+            cnpj.IsValid().Should().BeFalse();
         }
     }
 }

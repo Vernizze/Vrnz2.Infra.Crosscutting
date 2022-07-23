@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Vrnz2.Infra.CrossCutting.Extensions;
+﻿using Vrnz2.Infra.CrossCutting.Extensions;
 using Xunit;
 
 namespace Vrnz2.Infra.Crosscutting.Test.Extensions

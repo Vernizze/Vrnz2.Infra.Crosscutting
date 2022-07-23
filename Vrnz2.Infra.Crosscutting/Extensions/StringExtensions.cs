@@ -59,33 +59,33 @@ namespace Vrnz2.Infra.CrossCutting.Extensions
             return result;
         }
 
-        public static string TakeString(this string value, int length, bool returnAllFounded = false)
+        public static string TakeString(this string value, int length, bool returnAllFound = false)
         {
             var result = string.Empty;
             length = length < 0 ? 0 : length;
 
             if (!string.IsNullOrEmpty(value))
             {
-                if ((value.Length >= length) || (returnAllFounded)) 
+                if ((value.Length >= length) || (returnAllFound))
                 {
                     length = value.Length >= length ? length : value.Length;
 
                     result = value.Substring(0, length);
                 }
-                    
+
             }
 
             return result;
         }
 
-        public static string TakeString(this string value, int iniPosition, int length, bool returnAllFounded = false)
+        public static string TakeString(this string value, int iniPosition, int length, bool returnAllFound = false)
         {
             var result = string.Empty;
             length = length < 0 ? 0 : length;
 
             if (!string.IsNullOrEmpty(value))
             {
-                if ((value.Length >= iniPosition + length) || (returnAllFounded))
+                if ((value.Length >= iniPosition + length) || (returnAllFound))
                 {
                     length = value.Length >= iniPosition + length ? length : value.Length - iniPosition;
                     length = length < 0 ? 0 : length;

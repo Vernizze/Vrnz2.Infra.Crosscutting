@@ -124,12 +124,12 @@ namespace Vrnz2.Infra.CrossCutting.Libraries.Benchmark
 
         public void Reset()
         {
-            if (!this._stopWatch.IsNull()) 
+            if (!this._stopWatch.IsNull())
             {
                 this._stopWatch.Reset();
 
                 this._stopWatch.Start();
-            }                
+            }
 
             this._begin = TimeSpan.Zero;
             this._end = TimeSpan.Zero;

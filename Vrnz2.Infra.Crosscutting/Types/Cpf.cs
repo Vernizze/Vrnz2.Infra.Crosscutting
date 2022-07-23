@@ -77,7 +77,7 @@ namespace Vrnz2.Infra.CrossCutting.Types
         {
             var result = false;
 
-            if (!string.IsNullOrEmpty(value)) 
+            if (!string.IsNullOrEmpty(value))
             {
                 var valueString = Regex.Replace(value, "[^0-9]+", "");
 

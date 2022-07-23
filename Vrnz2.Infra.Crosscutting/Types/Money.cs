@@ -35,6 +35,8 @@ namespace Vrnz2.Infra.CrossCutting.Types
 
             this.StringValue = string.Format(cultureInfo, "{0:#,0.00}", this.Value);
 
+            this.IniValue = this.StringValue;
+
             Thread.CurrentThread.CurrentCulture = new CultureInfo(oldCultureName);
         }
 
@@ -86,7 +88,7 @@ namespace Vrnz2.Infra.CrossCutting.Types
 
         public static bool IsValid(string value)
         {
-            var result = true;
+            var result = false;
 
             if (!string.IsNullOrEmpty(value))
             {
@@ -97,7 +99,7 @@ namespace Vrnz2.Infra.CrossCutting.Types
                 result = result && ValidateSeparator(value);
 
                 Thread.CurrentThread.CurrentCulture = new CultureInfo(oldCultureName);
-            }            
+            }
 
             return result;
         }

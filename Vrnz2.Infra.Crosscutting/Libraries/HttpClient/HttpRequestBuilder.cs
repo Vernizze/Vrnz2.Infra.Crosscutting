@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Vrnz2.Infra.CrossCutting.Extensions;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net.Http;
@@ -6,7 +7,6 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
-using Vrnz2.Infra.CrossCutting.Extensions;
 
 namespace Vrnz2.Infra.CrossCutting.Libraries.HttpClient
 {
@@ -15,16 +15,16 @@ namespace Vrnz2.Infra.CrossCutting.Libraries.HttpClient
         #region Variables
 
         private HttpMethod method;
-        private string requestUri = "";
+        private string requestUri = string.Empty;
         private HttpContent content;
-        private string bearerToken = "";
-        private string user = "";
-        private string password = "";
-        private string acceptHeader = "";
+        private string bearerToken = string.Empty;
+        private string user = string.Empty;
+        private string password = string.Empty;
+        private string acceptHeader = string.Empty;
         private List<CustomHttpHeader> custom_headers = new List<CustomHttpHeader>();
         private TimeSpan timeout = new TimeSpan(0, 0, 15);
         private bool allowAutoRedirect;
-        private List<(string, string)> _queryList = new List<(string, string)>();
+        private readonly List<(string, string)> _queryList = new List<(string, string)>();
         private ByteArrayContent _fileContent = null;
 
         #endregion Variables

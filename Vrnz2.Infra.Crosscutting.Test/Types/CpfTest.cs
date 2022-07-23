@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FluentAssertions;
+using System;
 using Vrnz2.Infra.CrossCutting.Types;
 using Xunit;
 
@@ -20,12 +21,16 @@ namespace Vrnz2.Infra.CrossCutting.Test.Types
         [InlineData("257.371.680-50")]
         [InlineData("25737168050")]
         [InlineData("975.956.030-56")]
-        [InlineData("97595603056")]        
+        [InlineData("97595603056")]
         public void ValidCpf_StringValue(string value)
         {
+            //Arrange
             Cpf cpf = value;
 
-            Assert.True(cpf.IsValid());
+            // Act
+
+            // Assert
+            cpf.IsValid().Should().BeTrue();
         }
 
         [Theory]
@@ -38,9 +43,13 @@ namespace Vrnz2.Infra.CrossCutting.Test.Types
         [InlineData(97595603056)]
         public void ValidCpf_LongValue(long value)
         {
+            //Arrange
             Cpf cpf = value;
 
-            Assert.True(cpf.IsValid());
+            // Act
+
+            // Assert
+            cpf.IsValid().Should().BeTrue();
         }
 
         [Theory]
@@ -62,9 +71,13 @@ namespace Vrnz2.Infra.CrossCutting.Test.Types
         [InlineData("")]
         public void InvalidCpf_StringValue(string value)
         {
+            //Arrange
             Cpf cpf = value;
 
-            Assert.False(cpf.IsValid());
+            // Act
+
+            // Assert
+            cpf.IsValid().Should().BeFalse();
         }
 
         [Theory]
@@ -79,9 +92,13 @@ namespace Vrnz2.Infra.CrossCutting.Test.Types
         [InlineData(-1)]
         public void InvalidCpf_LongValue(long value)
         {
+            //Arrange
             Cpf cpf = value;
 
-            Assert.False(cpf.IsValid());
+            // Act
+
+            // Assert
+            cpf.IsValid().Should().BeFalse();
         }
     }
 }

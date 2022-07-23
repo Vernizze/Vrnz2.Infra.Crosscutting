@@ -34,7 +34,7 @@ namespace Vrnz2.Infra.CrossCutting.Extensions
             DescriptionAttribute result = null;
 
             var propertyInfos = _class.GetProperties();
-            
+
             var propertyInfo = propertyInfos.FirstOrDefault(f => f?.Name == propertyName);
 
             result = propertyInfo.GetCustomAttributes(typeof(DescriptionAttribute), false).FirstOrDefault() as DescriptionAttribute;

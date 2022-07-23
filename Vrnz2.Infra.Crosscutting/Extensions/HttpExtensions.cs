@@ -12,7 +12,7 @@ namespace Vrnz2.Infra.CrossCutting.Extensions
                 return false;
         }
 
-        public static bool IsSuccessHttpStatusCode(this int value) 
+        public static bool IsSuccessHttpStatusCode(this int value)
             => value >= 200 && value < 300;
 
         public static bool IsSuccessHttpStatusCode(this HttpStatusCode? value)

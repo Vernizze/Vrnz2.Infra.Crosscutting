@@ -1,4 +1,5 @@
-﻿using Vrnz2.Infra.CrossCutting.Types;
+﻿using FluentAssertions;
+using Vrnz2.Infra.CrossCutting.Types;
 using Xunit;
 
 namespace Vrnz2.Infra.Crosscutting.Test.Types
@@ -10,21 +11,29 @@ namespace Vrnz2.Infra.Crosscutting.Test.Types
         [InlineData("10,000.00", 10000)]
         public void ValidMoney_StringValue(string value, decimal finalValue)
         {
+            //Arrange
             Money money = value;
 
-            Assert.True(money.IsValid());
-            Assert.True(Money.IsValid(value));
-            Assert.Equal(money.Value, finalValue);
+            // Act
+
+            // Assert
+            money.IsValid().Should().BeTrue();
+            Money.IsValid(value).Should().BeTrue();
+            money.Value.Should().Be(finalValue);
         }
 
         [Theory]
         [InlineData(10.00)]
-        public void ValidCpf_LongValue(decimal value)
+        public void ValidMoney_LongValue(decimal value)
         {
+            //Arrange
             Money money = value;
 
-            Assert.True(money.IsValid());
-            Assert.Equal(money.Value, value);
+            // Act
+
+            // Assert
+            money.IsValid().Should().BeTrue();
+            money.Value.Should().Be(value);
         }
 
         [Theory]
@@ -40,19 +49,14 @@ namespace Vrnz2.Infra.Crosscutting.Test.Types
         [InlineData("10.000,000")]
         public void InvalidMoney_StringValue(string value)
         {
+            //Arrange
             Money money = value;
 
-            Assert.False(money.IsValid());
-            Assert.False(Money.IsValid(value));
-        }
+            // Act
 
-        [Theory]
-        [InlineData(10)]
-        public void InvalidCpf_LongValue(decimal value)
-        {
-            Money money = value;
-
-            Assert.True(money.IsValid());
+            // Assert
+            money.IsValid().Should().BeFalse();
+            Money.IsValid(value).Should().BeFalse();
         }
     }
 }

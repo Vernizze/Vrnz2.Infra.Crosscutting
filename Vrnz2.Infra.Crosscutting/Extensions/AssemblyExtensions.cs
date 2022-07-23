@@ -5,13 +5,20 @@ namespace Vrnz2.Infra.CrossCutting.Extensions
 {
     public static class AssemblyExtensions
     {
-        private static string GetEmbeddedFileFromAssembly(this Assembly assembly, string resourceName)
+        public static string GetEmbeddedFileFromAssembly(this Assembly assembly, string resourceName)
         {
-            string result;
+            var result = string.Empty;
 
-            using (Stream stream = assembly.GetManifestResourceStream(resourceName))
-            using (StreamReader reader = new StreamReader(stream))
-                result = reader.ReadToEnd();
+            var fileName = assembly
+                .GetManifestResourceNames()
+                .SFirstOrDefault(f => f.Contains(resourceName));
+
+            if (!string.IsNullOrEmpty(fileName))
+            {
+                using (Stream stream = assembly.GetManifestResourceStream(fileName))
+                using (StreamReader reader = new StreamReader(stream))
+                    result = reader.ReadToEnd();
+            }
 
             return result;
         }

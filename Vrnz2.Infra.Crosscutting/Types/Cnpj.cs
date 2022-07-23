@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Text.RegularExpressions;
-using Vrnz2.Infra.CrossCutting.Extensions;
+﻿using Vrnz2.Infra.CrossCutting.Extensions;
 
 namespace Vrnz2.Infra.CrossCutting.Types
 {
