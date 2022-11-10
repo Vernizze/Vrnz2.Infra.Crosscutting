@@ -63,6 +63,19 @@ namespace Vrnz2.Infra.Crosscutting.Test.Extensions
             // Assert
             diff.Should().NotBeNull();
         }
+
+        [Fact]
+        public void ToSecureObject()
+        {
+            // Arrange
+            DiffTestStub type01 = null;
+
+            // Act
+            var code = type01.ToSecureObject().Bind((d) => d.Code.ToNotNullSecureObject()).GetValue();
+
+            // Assert
+            code.Should().BeNull();
+        }
     }
 
     public class DiffTestStub
